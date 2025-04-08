@@ -1,1 +1,1 @@
-web: cd tictactoe-online2 && gunicorn app:app
+web: waitress-serve app:app
