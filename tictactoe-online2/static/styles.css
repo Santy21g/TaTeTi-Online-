@@ -1,0 +1,203 @@
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* 🔹 3 columnas de tamaño fijo */
+    grid-template-rows: repeat(3, 100px); /* 🔹 3 filas de tamaño fijo */
+    gap: 5px; /* 🔹 Espaciado entre las casillas */
+    margin: 20px auto;
+    width: 320px; /* 🔹 Ajusta el ancho total */
+}
+body {
+    font-family: 'Montserrat', sans-serif; /* 🔹 Cambia la fuente a algo más minimalista */
+    background: #000; /* 🔹 Fondo negro */
+    color: white; /* 🔹 Texto en blanco para contraste */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 300; /* 🔹 Fuente más ligera para minimalismo */
+    color: #fff; /* 🔹 Mantiene contraste con fondo negro */
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out;
+}
+h1:hover {
+    letter-spacing: 2px; /* Separa un poco las letras */
+    color: #bbb; /* Cambia el color para un efecto sutil */
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 8px;
+    margin-top: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: #111; /* 🔹 Fondo oscuro para cohesión */
+    border: 2px solid #444; /* 🔹 Bordes más sutiles */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    color: white; /* 🔹 Texto en blanco */
+}
+
+.cell:hover {
+    background: #222; /* 🔹 Efecto de hover más elegante */
+    transform: scale(1.05);
+}
+
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#restart:hover {
+    background: #0056b3;
+}
+
+#mensaje-resultado {
+    color: #d7d9e6; /* 🔹 Verde para el mensaje de victoria */
+    display: none;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}   
+
+/* 🔹 Manteniendo tu diseño original y agregando efectos dinámicos */
+
+/* Turno actual */
+#turno-actual {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #d7d9e6;
+    transition: color 0.3s ease-in-out;
+}
+#turno-actual.turno-X {
+    color: #ffcc00;
+}
+#turno-actual.turno-O {
+    color: #00ccff;
+}
+
+/* Efecto al marcar una casilla */
+.cell {
+    transition: transform 0.2s ease;
+}
+.cell.marcada {
+    transform: scale(1.2);
+}
+
+/* Resaltado de casillas ganadoras */
+.cell.ganadora {
+    background-color: #ffcc00; /* Amarillo para resaltar el ganador */
+    font-weight: bold;
+    animation: parpadeo 0.8s infinite alternate;
+}
+
+@keyframes parpadeo {
+    0% { background-color: #ffcc00; }
+    100% { background-color: #ffea80; }
+}
+
+/* Mensaje de resultado con animación */
+#mensaje-resultado {
+    color: #d7d9e6;
+    display: none;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#turno-actual {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #d7d9e6;
+    transition: color 0.3s ease-in-out;
+}
+
+.cell.marcada {
+    transform: scale(1.2);
+    background: #333; /* Cambia brevemente el fondo */
+}
+
+.board.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@media (max-width: 600px) {
+    #board {
+        grid-template-columns: repeat(3, minmax(100px, 120px)) !important;
+        grid-template-rows: repeat(3, minmax(100px, 120px)) !important;
+        gap: 1px !important; /* 🔹 Espaciado mínimo entre casillas */
+        max-width: 350px !important;
+    }
+    .cell {
+        font-size: 30px !important;
+        width: 100px !important;
+        height: 100px !important;
+    }
+    #turno-actual {
+        font-size: 24px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    #board {
+        grid-template-columns: repeat(3, minmax(90px, 110px)) !important;
+        grid-template-rows: repeat(3, minmax(90px, 110px)) !important;
+        gap: 1px !important; /* 🔹 Reduce el espacio */
+        max-width: 320px !important;
+    }
+    .cell {
+        font-size: 28px !important;
+        width: 90px !important;
+        height: 90px !important;
+    }
+    #turno-actual {
+        font-size: 22px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    #board {
+        grid-template-columns: repeat(3, minmax(80px, 100px)) !important;
+        grid-template-rows: repeat(3, minmax(80px, 100px)) !important;
+        gap: 0px !important; /* 🔹 Sin espacio entre casillas */
+        max-width: 290px !important;
+    }
+    .cell {
+        font-size: 26px !important;
+        width: 80px !important;
+        height: 80px !important;
+    }
+    #turno-actual {
+        font-size: 20px !important;
+    }
+} 
