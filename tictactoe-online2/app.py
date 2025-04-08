@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, render_template
 from game import TicTacToe
 from player import Random_computer_player
 import time
+import os  # 🔹 Importamos 'os' para obtener el puerto de Railway
 
 app = Flask(__name__)
 game = TicTacToe()
@@ -21,7 +22,7 @@ def play():
             return jsonify({"board": game.board, "winner": "X"})
 
         return jsonify({"board": game.board, "current_player": "O"})  # 🔹 Ahora enviamos el turno
-     
+
     return jsonify({"error": "Movimiento inválido"}), 400
 
 @app.route("/ai-play", methods=["POST"])
@@ -50,4 +51,5 @@ def restart():
     return jsonify({"board": game.board, "current_player": "X"})  # 🔹 Comienza con el jugador X
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 8080))  # 🔹 Obtiene el puerto de Railway, por defecto usa 8080
+    app.run(host="0.0.0.0", port=port)
