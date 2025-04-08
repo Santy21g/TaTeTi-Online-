@@ -1,1 +1,1 @@
-web: python -m flask run --host=0.0.0.0 --port=8080
+web: cd tictactoe-online2 && flask --app app run --host=0.0.0.0 --port=8080
