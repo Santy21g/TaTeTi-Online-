@@ -1,0 +1,1 @@
+web: cd tictactoe-online2 && waitress-serve app:app
