@@ -1,1 +1,1 @@
-web: cd tictactoe-online2 && python -m waitress.server app:app 
+web: python -m flask run --host=0.0.0.0 --port=8080
