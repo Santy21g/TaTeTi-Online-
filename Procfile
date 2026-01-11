@@ -1,1 +1,1 @@
-web: flask run --host=0.0.0.0 --port=${PORT:-8080}
+web: gunicorn --chdir tictactoe-online2 app:app
